@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETCH-A-SKETCH</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <p class="title">ETCH-A-SKETCH</p>
+    <div id="board"></div>
+    <div class="settings">
+        <button class="reset">RESET</button>
+    </div>
+    
+
+    <script>
+        for(let i=0; i<256; i++){
+            createDiv();
+        }
+
+        function createDiv(){
+            const newDiv = document.createElement("div");
+
+            board.appendChild(newDiv);
+            newDiv.style.width = "30px";
+            newDiv.style.height = "30px";
+            newDiv.style.backgroundColor = "white";
+            newDiv.style.border = "solid";
+            newDiv.style.borderColor = "black";
+            newDiv.style.borderWidth = "1px";
+            newDiv.className = "square";
+
+        }
+
+        board.addEventListener("mouseover", function(){
+            event.target.style.backgroundColor = "black";
+        });
+
+        reset.addEventListener("click", function(){
+            square.style.backgroundColor = "white";
+        } )
+
+        //fix reset button
+    </script>
+</body>
+</html>
