@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ETCH-A-SKETCH</title>
-    <link href="styles.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <p class="title">ETCH-A-SKETCH</p>
@@ -13,62 +14,5 @@
         <button id="resetBtn">RESET</button>
         <button id="customGridSizeBtn">Choose Grid Size</button>
     </div>
-    
-
-    <script>
-        let squarePerRow = 16;
-
-        createGrid();
-
-        function createGrid(){
-            for(let i=0; i<(squarePerRow*squarePerRow); i++){
-                createDiv();
-            }
-        }
-
-        function deleteGrid(){
-            const elements = document.getElementsByClassName("square");
-            while(elements.length > 0){
-                elements[0].remove();
-            }
-        }
-
-        function createDiv(){
-            const newDiv = document.createElement("div");
-
-            board.appendChild(newDiv);
-            const squareSize = (700-(2*squarePerRow))/squarePerRow; //size of grid subtracting the pixels of border
-            newDiv.style.width = `${squareSize}px`;
-            newDiv.style.height = `${squareSize}px`;
-            newDiv.style.backgroundColor = "white";
-            newDiv.style.border = "solid";
-            newDiv.style.borderColor = "black";
-            newDiv.style.borderWidth = "1px";
-            newDiv.className = "square";
-        }
-
-
-        board.addEventListener("mouseover", function(){
-            event.target.style.backgroundColor = "black";
-        });
-
-        resetBtn.addEventListener("click", function(){
-            deleteGrid();
-            createGrid();
-        })
-
-        customGridSizeBtn.addEventListener("click", function(){
-            const userRowSize = prompt("Enter a length/width for the board");
-            if (userRowSize > 100){
-                squarePerRow = 100;
-            } else if(userRowSize < 5){
-                squarePerRow = 5;
-            } else{
-                squarePerRow = userRowSize;
-            }
-            deleteGrid();
-            createGrid();
-        })
-    </script>
 </body>
 </html>
